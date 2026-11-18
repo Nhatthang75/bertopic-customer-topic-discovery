@@ -1,0 +1,202 @@
+{
+  "artifacts": {
+    "assignments": {
+      "required_fields": {
+        "assignment_status": "str",
+        "cluster_key": "str?",
+        "conversation_id": "str",
+        "evidence_spans": "list",
+        "evidence_status": "str",
+        "evidence_unit_id": "str",
+        "score": "number?",
+        "score_type": "str",
+        "segment_ids": "list",
+        "source": "str",
+        "topic_id": "str"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "evidence_unit_id",
+        "topic_id",
+        "source"
+      ]
+    },
+    "candidates": {
+      "required_fields": {
+        "cluster_key": "str",
+        "conversation_support": "int",
+        "description": "str?",
+        "keywords": "list",
+        "label": "str?",
+        "local_cluster_id": "int",
+        "random_unit_ids": "list",
+        "representative_unit_ids": "list",
+        "review_version": "int",
+        "seed": "int",
+        "status": "str"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "cluster_key"
+      ]
+    },
+    "conversation_topics": {
+      "required_fields": {
+        "conversation_id": "str",
+        "evidence_basis": "str",
+        "evidence_count": "int?",
+        "max_score": "number?",
+        "primary_topic": "bool",
+        "source": "str",
+        "taxonomy_version": "str",
+        "topic_id": "str"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "conversation_id",
+        "topic_id",
+        "source",
+        "evidence_basis"
+      ]
+    },
+    "data_quality": {
+      "required_fields": {
+        "alignment_ablation_failures": "int",
+        "counts": "dict",
+        "metadata_availability": "dict",
+        "reason_counts": "dict",
+        "unresolved_counts": "dict"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id"
+      ]
+    },
+    "metrics": {
+      "required_fields": {
+        "CI": "list?",
+        "cohort_id": "str",
+        "denominator": "int?",
+        "evaluation_stage": "str",
+        "experiment_mode": "str",
+        "grain": "str",
+        "ground_truth_type": "str",
+        "level": "str",
+        "metric_name": "str",
+        "null_reason": "str?",
+        "seed": "int",
+        "support": "int",
+        "value": "number?"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "metric_name",
+        "cohort_id",
+        "level",
+        "seed",
+        "evaluation_stage"
+      ]
+    },
+    "reviews": {
+      "required_fields": {
+        "adjudication": "dict?",
+        "cluster_key": "str",
+        "per_sample_judgements": "list",
+        "reason": "str",
+        "review_version": "int",
+        "reviewed_at": "str",
+        "reviewer_ids": "list",
+        "rubric_scores": "dict",
+        "sample_ids": "list",
+        "target_id": "str?"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "cluster_key",
+        "review_version"
+      ]
+    },
+    "run_manifest": {
+      "required_fields": {
+        "artifact_hashes": "dict",
+        "benchmark_validity": "str",
+        "config_hash": "str",
+        "fit_scopes": "list",
+        "gate_events": "list",
+        "mapping_version": "str",
+        "model_revisions": "dict",
+        "preprocessing_version": "str",
+        "resource_usage": "dict",
+        "search_registry_hash": "str",
+        "seed": "int",
+        "source_hashes": "dict",
+        "split_manifest_hash": "str",
+        "taxonomy_version": "str"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id"
+      ]
+    },
+    "segments": {
+      "required_fields": {
+        "content_status": "str",
+        "conversation_id": "str",
+        "customer_turn_index": "int",
+        "evidence_unit_id": "str",
+        "masked_customer_text": "str",
+        "preprocessing_version": "str",
+        "segment_id": "str",
+        "source_split": "str",
+        "span_end": "int",
+        "span_start": "int"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "segment_id"
+      ]
+    },
+    "topic_statistics": {
+      "required_fields": {
+        "channel": "str?",
+        "conversation_count": "int",
+        "conversation_share": "number?",
+        "customer_message_count": "int",
+        "eligible_conversations": "int",
+        "evidence_basis": "str",
+        "evidence_coverage": "number",
+        "mention_count": "int?",
+        "null_reason": "str?",
+        "scope_id": "str",
+        "segment_count": "int",
+        "source": "str",
+        "source_messages_with_assignment": "int",
+        "time_bucket": "str?",
+        "topic_id": "str",
+        "unique_customers": "int?"
+      },
+      "unique_key": [
+        "experiment_id",
+        "run_id",
+        "scope_id",
+        "topic_id",
+        "source",
+        "evidence_basis"
+      ]
+    }
+  },
+  "csv_null": "\\N",
+  "dialect": "bertopic-poc-contract-v1",
+  "required_base": {
+    "experiment_id": "str",
+    "run_id": "str",
+    "schema_version": "str"
+  },
+  "schema_version": "1.0.0"
+}

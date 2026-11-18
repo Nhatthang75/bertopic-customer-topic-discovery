@@ -1,0 +1,23 @@
+﻿.venv/
+.cache/
+.tools/
+.agents/
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Generated artifacts, tokenizers, and large raw datasets
+artifacts/
+resources/tokenizers/
+data/raw/
+
+# Personal / exported PDF files
+*.pdf
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+

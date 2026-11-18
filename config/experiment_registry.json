@@ -1,0 +1,221 @@
+{
+  "advanced_registered": [],
+  "all_unit_ablation_seed": 42,
+  "authorized_task_groups": [
+    1,
+    2
+  ],
+  "bootstrap_replicates": 1000,
+  "budget": {
+    "batch": 32,
+    "clustering_seconds_per_config": 600,
+    "cpu_threads": 4,
+    "oom_retry_batch": 8,
+    "ram_gib": 8,
+    "smoke_conversations": 200,
+    "smoke_minutes_per_model": 10,
+    "tuning_seconds": 14400
+  },
+  "change": "bertopic-customer-conversation-poc",
+  "experiment_id": "phase1",
+  "gates": [
+    "G0 registry/schema",
+    "G1 open config",
+    "G2 open outputs and blinded review",
+    "G3 global outputs before test scoring"
+  ],
+  "hidden_dev": [
+    "shipping_issue"
+  ],
+  "hidden_final": [
+    "subscription_inquiry",
+    "troubleshoot_site"
+  ],
+  "known_flows": [
+    "account_access",
+    "manage_account",
+    "order_issue",
+    "product_defect",
+    "purchase_dispute",
+    "single_item_query",
+    "storewide_query"
+  ],
+  "model_selection_performed": false,
+  "models": [
+    {
+      "file_sha256": {
+        "README.md": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+        "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+        "sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+        "special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+        "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+        "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+      },
+      "input_adapter": "tokenizers-json; add_special_tokens=False; no truncation/padding; NFC text",
+      "license": "apache-2.0",
+      "max_text_tokens": 200,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "remote_weights_sha256": {
+        "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+        "pytorch_model.bin": "c3a85f238711653950f6a79ece63eb0ea93d76f6a6284be04019c53733baf256"
+      },
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "status": "metadata_locked",
+      "tokenizer_directory": "resources/tokenizers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "weights_downloaded": false
+    },
+    {
+      "file_sha256": {
+        "README.md": "89a1a9c3290fe58e76c939b578c48a14331dc7bfcaaf5a53102adb183da6f96a",
+        "config.json": "d46a3e04ded82bba22528424480697d394eeda6a27484e08c5bb2bdf5906cfa0",
+        "sentence_bert_config.json": "cabfacded9272091a06ff595a46ef027a76ddf4ac9e77d0fcf11c605748f1667",
+        "special_tokens_map.json": "9ef40e9c160511bf3f46ceb71f1471dafa1e9473d5120bb816c36b2efa75f8ba",
+        "tokenizer.json": "b8be2c30ba5dd723a6d5ee26d013da103d5408d92ddcb23747622f9e48f1d842",
+        "tokenizer_config.json": "67f2ff7e223518e729869bb3a70f0caf8368fe549383fc11cfe2dfb42fffc268"
+      },
+      "input_adapter": "tokenizers-json; add_special_tokens=False; no truncation/padding; NFC text",
+      "license": "apache-2.0",
+      "max_text_tokens": 200,
+      "model_id": "sentence-transformers/all-mpnet-base-v2",
+      "remote_weights_sha256": {
+        "model.safetensors": "78c0197b6159d92658e319bc1d72e4c73a9a03dd03815e70e555c5ef05615658",
+        "pytorch_model.bin": "a8fd120b1a0032e70ff3d4b8ab8e46a6d01c2cb08ffe7c007a021c1788928146"
+      },
+      "revision": "e8c3b32edf5434bc2275fc9bab85f82640a19130",
+      "status": "metadata_locked",
+      "tokenizer_directory": "resources/tokenizers/all-mpnet-base-v2/e8c3b32edf5434bc2275fc9bab85f82640a19130",
+      "weights_downloaded": false
+    }
+  ],
+  "preprocessing": {
+    "dedup_tokenization": "NFC/casefold Unicode word tokens; 5-gram sets; exact normalized masked customer text",
+    "max_text_tokens": 200,
+    "near_duplicate_jaccard": 0.9,
+    "near_duplicate_min_tokens": 20,
+    "overlap_tokens": 20,
+    "version": "1.0.0"
+  },
+  "raw_hashes": {
+    "abcd_v1.1.json.gz": "2bdf53ac359543dcdc38d55bc6513e78df120363f8f44870716e909f4606de15",
+    "ontology.json": "2e1c1d763518ba084ada7f7bc8b54f0b489c81da3b170875cf9340891e06524c"
+  },
+  "review": {
+    "blinded_required": true,
+    "coherence_sample_fraction": 0.8,
+    "novelty_score": 2,
+    "random": 5,
+    "representative": 5,
+    "reviewers_required": 2,
+    "seed": 42
+  },
+  "schema_version": "1.0.0",
+  "search": {
+    "baseline": {
+      "max_df": 1.0,
+      "max_iter": 1000,
+      "min_df": 2,
+      "ngram_range": [
+        1,
+        2
+      ]
+    },
+    "baseline_C": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "baseline_q": [
+      0.35,
+      0.5,
+      0.65,
+      0.8,
+      0.95
+    ],
+    "child_fallback": [
+      0.5,
+      0.1
+    ],
+    "clustering_selection": "harmonic(routing_adjusted_hidden_coverage,macro_cluster_purity_proxy); tie outlier_rate/tuple",
+    "delta": [
+      0.0,
+      0.05,
+      0.1,
+      0.15
+    ],
+    "fit_scopes": {
+      "closed_threshold_dev": "K",
+      "open_dev": "K+H_dev",
+      "open_test": "K+H_final",
+      "open_train": "K"
+    },
+    "hdbscan": {
+      "cluster_selection_method": "eom",
+      "metric": "euclidean",
+      "min_cluster_size": [
+        5,
+        10
+      ],
+      "min_samples": [
+        1,
+        5
+      ]
+    },
+    "representation": {
+      "guidance": false,
+      "min_df": 1,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "nr_topics": null,
+      "top_n_words": 10
+    },
+    "selection": "unknown_f1>=0.60 rồi max known_macro_f1; fallback harmonic mean; tie unknown_f1/model_order/tau/delta",
+    "tau": [
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8
+    ],
+    "umap": {
+      "metric": "cosine",
+      "min_dist": 0.0,
+      "n_components": [
+        2,
+        5
+      ],
+      "n_neighbors": [
+        5,
+        15
+      ],
+      "random_state": 42
+    }
+  },
+  "seeds": [
+    13,
+    42,
+    73
+  ],
+  "stage": "G0_registered",
+  "targets": {
+    "closed_macro_f1": 0.7,
+    "cluster_support": 5,
+    "family_precision": 0.7,
+    "family_recall": 0.3,
+    "recovered_flows": 2,
+    "routing_recall": 0.7,
+    "unknown_f1": 0.6
+  },
+  "test_exposure_log": [
+    "Đã khảo sát cấu trúc/count, một hội thoại test và phân bố subflow trước triển khai; không hoàn toàn blind"
+  ]
+}

@@ -1,0 +1,10 @@
+﻿{
+  "schema_version": "1.0.0",
+  "isolation": "Kiểm soát ứng dụng và ranh giới API, không thay ACL và không bảo đảm OS isolation cho user có quyền đọc raw",
+  "custodian": "Đọc raw/ontology và sealed labels chỉ membership_only, không scoring hoặc inference",
+  "inference": "Chỉ features, taxonomy_k và registry_public; không sealed labels/taxonomy_full",
+  "evaluator": "Fixtures/train/dev trước G3; test scoring chỉ sau G3",
+  "reviewer": "Hai người độc lập, chỉ taxonomy K/masked samples; đã biết hidden labels không được coi blinded",
+  "registry_public": "Chỉ version, preprocessing và resource budget; không hidden sets hoặc model labels",
+  "cache": "Theo experiment/model revision/text hash; không label hoặc fitted artifact closed-set tái dùng open-set"
+}
